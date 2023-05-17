@@ -1,44 +1,62 @@
-servico1 = int(input("Informe o servico usado"))
-un1 = float(input("Quanto voce usou esse serviço?"))
-maisServicos = input("Mais algum serviço foi usado? Digite 1 para SIM, 0 para NÃO")
+qtdeInternet = int(input("Informe o consumo de internet: "))
+qtdeLocal = int(input("Informe o consumo das ligações locais: "))
+qtdeInterurbano = int(input("Informe o consumo das ligações interurbanas: "))
+qtdeTorpedo = int(input("Informe o consumo de torpedos: "))
 
-if servico1 == 1:
-    custoHora1 = 0.50
-elif servico1 == 2:
-    custoHora1 = 0.35
-elif servico1 == 3:
-    custoHora1 = 0.60
-else:
-    custoHora1 = 0.20
+valorInternet = qtdeInternet * 0.5
+valorLocal = qtdeLocal * 0.35
+valorInterurbano = qtdeInterurbano * 0.6
+valorTorpedo = qtdeTorpedo * 0.2
 
-if maisServicos == 1:
-    servico2 = int(input("Informe qual outro serviço voce usou"))
-    un2 = float(input("Quanto voce usou esse serviço?"))
-    maisServicos_2 = input("Mais algum serviço foi usado? Digite 1 para SIM, 0 para NÃO")
+semDesconto = float(valorInternet + valorLocal + valorInterurbano + valorTorpedo)
 
-    if servico2 == 1:
-        custoHora2 = 0.50
-    elif servico2 == 2:
-        custoHora2 = 0.35
-    elif servico2 == 3:
-        custoHora2 = 0.60
-    else:
-        custoHora2 = 0.20
+descontoAtual = 0
+tipoDescontoAtual = " "
+if qtdeInternet > 50:
+    descontoInternet = qtdeInternet * 0.05
+    descontoAtual = descontoInternet
+    tipoDescontoAtual = "internet"
 
-    if maisServicos_2 == 1:
-        servico3 = int(input("Informe qual outro serviço voce usou"))
-        un3 = float(input("Quanto voce usou esse serviço?"))
+if qtdeLocal > 200:
+    descontoLocal = qtdeLocal * 0.1
+    if descontoLocal > descontoAtual:
+        descontoAtual = descontoLocal
+        tipoDescontoAtual = "local"
 
-        if servico3 == 1:
-            custoHora3 = 0.50
-        elif servico3 == 2:
-            custoHora3 = 0.35
-        elif servico3 == 3:
-            custoHora3 = 0.60
-        else:
-            custoHora = 0.20
+if qtdeInterurbano > 150:
+    descontoInterurbano = qtdeInterurbano * 0.1
+    if descontoInterurbano > descontoAtual:
+        descontoAtual = qtdeInterurbano
+        tipoDescontoAtual = "interurbano"
+
+if qtdeTorpedo > 50:
+    descontoTorpedo = qtdeTorpedo * 0.2
+    if descontoTorpedo > descontoAtual:
+        descontoAtual = descontoTorpedo
+        tipoDescontoAtual = "torpedo"
+
+print(f"O valor sem desconto é {semDesconto:.0f}")
+print(f"O valor de cada desconto é: {descontoInternet:.0f}\ {descontoInternet:.0f} ")
+o valor total com o desconto atual
 
 
-
-custoTotal2 = custoHora2 * un2
-
+# if descontoInternet > descontoLocal and \
+#         descontoInternet > descontoInterurbano and \
+#         descontoInternet > descontoTorpedo:
+#     print("O desconto será sobre o serviço internet")
+# elif descontoLocal > descontoInternet and \
+#         descontoLocal > descontoInterurbano and \
+#         descontoLocal > descontoTorpedo:
+#     print("O desconto será sobre o serviço ligação Local")
+# elif descontoInterurbano > descontoInternet and \
+#         descontoInterurbano > descontoLocal and \
+#         descontoInterurbano > descontoTorpedo:
+#     print("O desconto será sobre o serviço Ligação interurbana")
+# elif descontoTorpedo > descontoInternet and \
+#         descontoTorpedo > descontoLocal and \
+#         descontoTorpedo > descontoInterurbano:
+#     print("O desconto será sobre o serviço torpedo")
+# else:
+#     print("Não haverá desconto")
+#
+# print = (f"O valor da fatura será: \n {valorInternet}")
